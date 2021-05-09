@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<form action="calcu" method="post">
+		{% csrf_token %}
+		<label>Num A: </label>
+		<input type="text" name="numa" required>
+		<label>Num B: </label>
+		<input type="text" name="numb" required>
+		<br>
+		<div style="margin-top: 2rem; padding: 4px;">
+		<button type="submit" value="add" name="cal">+	</button>
+		<button type="submit" value="sub" name="cal">-	</button>
+		<button type="submit" value="div" name="cal">/	</button>
+		<button type="submit" value="mul" name="cal">*	</button>
+		</div>
+		<br>
+		<label>Result: </label>
+		<input type="text" name="result" value={{msg}}>
+	</form>
+</body>
+</html>

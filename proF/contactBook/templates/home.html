@@ -1,0 +1,121 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<section class="add">
+	<h3>Add Person</h3>
+	<hr>
+	<div class="container">
+		<form action="addperson" method="POSt">
+			{% csrf_token %}
+			<div class="row">
+				<div class="col">
+					<input type="text" class="form-control" name="name" id="name" placeholder="Name">
+				</div>
+				<div class="col">
+					<input type="text" class="form-control" name="phone" id="phone" placeholder="Number">
+				</div>
+				<div class="col">
+					<button class="btn btn-primary btn-block" type="submit">Submit</button>
+				</div>
+			</div>
+			{{msg0}}
+		</form>
+	</div>
+</section>
+
+
+
+<section class="display mt-5">
+	<h3>Display</h3>
+	<hr>
+
+	<div class="container">
+		<form action="display" method="POSt">
+			{% csrf_token %}
+			<table class="table">
+				<thead>
+					<tr>
+						<th scope="col">ID</th>
+						<th scope="col">Name</th>
+						<th scope="col">Number</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for cnt in cnts %}
+					<tr>
+						<td>{{cnt.id}}</td>
+						<td>{{cnt.name}}</td>
+						<td>{{cnt.phone}}</td>
+					</tr>
+					{% endfor %}
+
+				</tbody>
+			</table>
+			<button class="btn btn-primary btn-block" type="submit">Submit</button>
+		</form>
+	</div>
+</section>
+
+
+
+
+
+<section class="delete mt-5">
+	<h3>Delete</h3>
+	<hr>
+	<div class="container">
+		<form action="delete" method="POSt">
+			{% csrf_token %}
+			<div class="row">
+				<div class="col">
+					<input type="text" class="form-control" name="name" id="name" placeholder="Name">
+				</div>
+				<div class="col">
+					<button class="btn btn-danger btn-block" type="submit">Submit</button>
+				</div>
+			</div>
+			{{msg}}
+		</form>
+	</div>
+</section>
+
+
+
+<section class="update mt-5">
+	<h3>Update</h3>
+
+	<hr>
+	<h1>{{msg3}}</h1>
+	<div class="container">
+		<form action="update" method="POST">
+			{% csrf_token %}
+			<div class="row">
+				<div class="col">
+					<input class="form-control" type="text" name="sname" id="sname" placeholder="Name">
+				</div>
+				<div class="col">
+					<input class="form-control" type="text" name="Nname" id="Nname" placeholder="New Name">
+				</div>
+				<div class="col">
+					<button class="btn btn-primary btn-block" type="submit" value="uname" name="btn">Update</button>
+				</div>
+			</div>
+
+			<div class="row mt-2 mb-5">
+				<div class="col">
+					<input class="form-control" type="text" name="snumber" id="snumber" placeholder="Number">
+				</div>
+				<div class="col">
+					<input class="form-control" type="text" name="Nnumber" id="Nnumber" placeholder="New Number">
+				</div>
+				<div class="col">
+					<button class="btn btn-primary btn-block" type="submit" value="uphone" name="btn">Update</button>
+				</div>
+			</div>
+
+		</form>
+		{{msg}}
+	</div>
+
+</section>
+{% endblock %}
